@@ -70,7 +70,7 @@ public class DeviceList extends AppCompatActivity
     private void pairedDevicesList()
     {
         pairedDevices = myBluetooth.getBondedDevices();
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<String>();
 
         if (pairedDevices.size()>0)
         {
