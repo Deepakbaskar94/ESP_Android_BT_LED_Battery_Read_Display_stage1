@@ -16,8 +16,8 @@ void setup() {
   Serial.begin(115200);
   SerialBT.begin("ESP32_DK`"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
-  Serial.println("To turn ON send: a");//print on serial monitor  
-  Serial.println("To turn OFF send: b"); //print on serial monitor 
+  Serial.println("To turn ON send: "ON");//print on serial monitor  
+  Serial.println("To turn OFF send: "OFF"); //print on serial monitor 
   pinMode(LEDpin, OUTPUT);
 }
 
@@ -27,23 +27,12 @@ void loop() {
   while (SerialBT.available()) {
     receivedChar = SerialBT.read();
     readString += receivedChar;
-    //Serial.print(readString);
   }
-    //Serial.write(SerialBT.read());  
-    //Serial.write(SerialBT.read()); 
-    //Serial.write(SerialBT.read()); 
-    //SerialBT.print("Received:");// write on BT app
-    //SerialBT.println(receivedChar);// write on BT app
-    //Serial.print("Received1: ");// write on BT app
-    //Serial.write(receivedChar);
 
-    //SerialBT.println(receivedChar);//print on the app    
-    //SerialBT.write(receivedChar); //print on serial monitor
 
    if (readString.length() >0) {
     Serial.println(readString);
     if(readString == "ON")
-    //if(receivedChar == turnON)
     {
      SerialBT.println("LED ON:");// write on BT app
      Serial.println("LED ON:");//write on serial monitor
@@ -51,7 +40,7 @@ void loop() {
        
     }
     if(readString == "OFF")
-    //if(receivedChar == turnOFF)
+
     {
      SerialBT.println("LED OFF:");// write on BT app
      Serial.println("LED OFF:");//write on serial monitor
@@ -60,5 +49,5 @@ void loop() {
     //Serial.println(readString);
     readString="";    
   }
- // delay(20);
+
 }
